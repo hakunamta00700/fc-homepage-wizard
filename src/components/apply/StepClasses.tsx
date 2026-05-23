@@ -1,31 +1,22 @@
 'use client';
 
-import { useCallback } from 'react';
 import { Class, CLASS_STATUS_OPTIONS } from '@/lib/types';
-
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import type { StepProps } from './types';
 
 const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
-const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };
 
-export default function StepClasses({ register, errors, watch, setValue, control }: StepProps) {
+export default function StepClasses({ register, errors, watch, setValue }: StepProps) {
   const classes = watch('classes') || [];
 
-  const addClass = useCallback(() => {
+  const addClass = () => {
     if (classes.length >= 5) return;
     setValue('classes', [...classes, { name: '', age_group: '', day: '', time: '', location: '', fee: '', status: '모집중' as const }], { shouldValidate: false });
-  }, [classes, setValue]);
+  };
 
-  const removeClass = useCallback((index: number) => {
-    const updated = classes.filter((_: any, i: number) => i !== index);
+  const removeClass = (index: number) => {
+    const updated = classes.filter((_, i) => i !== index);
     setValue('classes', updated, { shouldValidate: true });
-  }, [classes, setValue]);
+  };
 
   return (
     <div>

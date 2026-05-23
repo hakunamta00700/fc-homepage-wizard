@@ -1,18 +1,11 @@
 'use client';
 
 import { TEMPLATE_OPTIONS, STEP_LABELS, ApplicationFormData, Coach, Class, Review } from '@/lib/types';
+import type { StepProps } from './types';
 
-interface StepReviewSubmitProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
+interface StepReviewSubmitProps extends Pick<StepProps, 'watch'> {
   onEditStep?: (step: number) => void;
 }
-
-const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
-const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };
 
 function formatValue(value: unknown): string {
   if (typeof value === 'boolean') {

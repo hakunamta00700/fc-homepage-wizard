@@ -1,12 +1,7 @@
 'use client';
 
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import { Review } from '@/lib/types';
+import type { StepProps } from './types';
 
 const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
 const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };
@@ -20,7 +15,7 @@ export default function StepReviews({ register, errors, watch, setValue }: StepP
   };
 
   const removeReview = (index: number) => {
-    const updated = reviews.filter((_: any, i: number) => i !== index);
+    const updated = reviews.filter((_, i) => i !== index);
     setValue('reviews', updated, { shouldValidate: true });
   };
 
@@ -28,7 +23,7 @@ export default function StepReviews({ register, errors, watch, setValue }: StepP
     <div>
       <p style={helperTextStyle}>학부모님들의 생생한 후기를 입력해주세요. 최대 5개까지 등록 가능합니다.</p>
 
-      {reviews.map((_: any, index: number) => (
+      {reviews.map((_: Review, index: number) => (
         <div className="review-entry mb-4" key={index}>
           <div className="entry-header">
             <span className="entry-title">후기 {index + 1}</span>

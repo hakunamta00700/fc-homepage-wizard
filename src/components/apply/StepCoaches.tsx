@@ -1,31 +1,23 @@
 'use client';
 
-import { useCallback } from 'react';
 import { Coach } from '@/lib/types';
-
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import type { StepProps } from './types';
 
 const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
 const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };
 
-export default function StepCoaches({ register, errors, watch, setValue, control }: StepProps) {
+export default function StepCoaches({ register, errors, watch, setValue }: StepProps) {
   const coaches = watch('coaches') || [];
 
-  const addCoach = useCallback(() => {
+  const addCoach = () => {
     if (coaches.length >= 3) return;
     setValue('coaches', [...coaches, { name: '', role: '', image: '', career: '', license: '', intro: '' }], { shouldValidate: false });
-  }, [coaches, setValue]);
+  };
 
-  const removeCoach = useCallback((index: number) => {
-    const updated = coaches.filter((_: any, i: number) => i !== index);
+  const removeCoach = (index: number) => {
+    const updated = coaches.filter((_, i) => i !== index);
     setValue('coaches', updated, { shouldValidate: true });
-  }, [coaches, setValue]);
+  };
 
   return (
     <div>

@@ -1,19 +1,11 @@
 'use client';
 
-import { GrowthReportEnabled, GROWTH_REPORT_OPTIONS } from '@/lib/types';
-
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import { GROWTH_REPORT_OPTIONS } from '@/lib/types';
+import type { StepProps } from './types';
 
 const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
-const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };
 
-export default function StepCurriculum({ register, errors, watch, setValue, control }: StepProps) {
+export default function StepCurriculum({ register, errors, watch }: StepProps) {
   const growthReportEnabled = watch('growth_report_enabled');
 
   return (

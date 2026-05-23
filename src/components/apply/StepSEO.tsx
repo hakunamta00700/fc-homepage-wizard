@@ -1,12 +1,6 @@
 'use client';
 
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import type { StepProps } from './types';
 
 const errorStyle = { fontSize: '0.8rem', color: '#dc2626', marginTop: '0.25rem' };
 const helperTextStyle = { fontSize: '0.8rem', color: '#64748b', marginTop: '0.25rem' };

@@ -12,7 +12,6 @@ interface WizardNavigationProps {
 
 export default function WizardNavigation({
   currentStep,
-  totalSteps,
   onPrevious,
   onNext,
   isNextDisabled = false,

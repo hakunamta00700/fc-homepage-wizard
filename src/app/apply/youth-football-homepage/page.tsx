@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { applicationSchema } from '@/lib/schema';
 import { flattenApplicationData } from '@/lib/flatten';
-import { ApplicationFormData, STEP_LABELS, REQUIRED_FIELDS } from '@/lib/types';
+import { ApplicationFormData } from '@/lib/types';
 import WizardLayout from '@/components/apply/WizardLayout';
 import StepBasicInfo from '@/components/apply/StepBasicInfo';
 import StepHero from '@/components/apply/StepHero';
@@ -154,8 +154,6 @@ export default function YouthFootballHomepageApplyPage() {
     mode: 'onBlur',
   });
 
-  const formData = watch();
-
   const validateStep = useCallback(
     async (step: number): Promise<boolean> => {
       const fields = stepFields[step];
@@ -166,7 +164,7 @@ export default function YouthFootballHomepageApplyPage() {
     [trigger]
   );
 
-  const goToNextStep = useCallback(async () => {
+  const goToNextStep = async () => {
     if (currentStep === TOTAL_STEPS - 1) {
       handleSubmit(onSubmit)();
       return;
@@ -176,7 +174,7 @@ export default function YouthFootballHomepageApplyPage() {
     if (isValid) {
       setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS - 1));
     }
-  }, [currentStep, validateStep, handleSubmit]);
+  };
 
   const goToPreviousStep = useCallback(() => {
     setCurrentStep((prev) => Math.max(prev - 1, 0));

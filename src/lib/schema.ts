@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import type { TemplateType, ClassStatus, GrowthReportEnabled } from './types';
 
 export const coachSchema = z.object({
   name: z.string().max(50, '50자 이내로 입력해주세요.'),
@@ -27,7 +26,6 @@ export const reviewSchema = z.object({
 });
 
 const templateTypeEnum = z.enum(['brand', 'growth_report', 'elite']);
-const classStatusEnum = z.enum(['모집중', '마감임박', '대기접수', '모집마감']);
 const growthReportEnum = z.enum(['제공함', '준비중', '제공하지 않음']);
 
 export const applicationSchema = z.object({

@@ -1,14 +1,7 @@
 'use client';
 
 import { TEMPLATE_OPTIONS } from '@/lib/types';
-
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import type { StepProps } from './types';
 
 export default function StepBasicInfo({ register, errors, watch }: StepProps) {
   const mainColor = watch('main_color') || '#2563eb';

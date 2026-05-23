@@ -1,12 +1,6 @@
 'use client';
 
-interface StepProps {
-  register: any;
-  errors: any;
-  watch: any;
-  setValue: any;
-  control: any;
-}
+import type { StepProps } from './types';
 
 export default function StepClubIntro({ register }: StepProps) {
   return (

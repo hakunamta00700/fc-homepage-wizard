@@ -3,7 +3,6 @@
 import { ReactNode } from 'react';
 import WizardProgress from './WizardProgress';
 import WizardNavigation from './WizardNavigation';
-import { STEP_LABELS } from '@/lib/types';
 
 interface WizardLayoutProps {
   currentStep: number;
